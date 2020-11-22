@@ -5,7 +5,6 @@ var generateBtn = document.querySelector("#generate");
 var passwordLength;
 var characterType;
 var allTypes = [];
-// debugger;
 
 // Write password to the #password input
 function writePassword() {
@@ -93,6 +92,7 @@ function askLength() {
   if (isNaN(inputNumber)) {
     window.alert("Must input a number");
     askLength();
+    //Validate that the number entered is between 8-128 characters.
   } else if (inputNumber < 8 || inputNumber > 128) {
     window.alert("You entered an invalid number. Try again.");
     askLength();
@@ -101,12 +101,14 @@ function askLength() {
   }
 }
 
+//Ask the user for all the parameters of the password
 function getUserPassParams() {
   askLength();
   askLowers();
   askUppers();
   askNumbers();
   askSymbols();
+  //Validate that the user chose at least one character type
   if (allTypes.length === 0) {
     alert("Must choose at least 1 character type.");
     getUserPassParams();
